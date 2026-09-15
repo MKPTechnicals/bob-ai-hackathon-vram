@@ -26,8 +26,13 @@ jobs:
 
       - name: Install Playwright system deps and browsers
         run: |
-          # Use the Playwright CLI via npx to install required OS deps and browser
-          npx playwright@1.37.0 install --with-deps chromium
+          # Ensure common system libraries (try alternative package names) before installing browsers
+          sudo apt-get update
+          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libxss1 libgbm1 libgtk-3-0 || true
+          # Some Ubuntu images provide libasound2 under alternate package names; try these as a fallback
+          sudo apt-get install -y libasound2t64 liboss4-salsa-asound2 || true
+          # Install only the Playwright browser binaries (omit --with-deps to avoid repeated distro package failures)
+          npx playwright@1.37.0 install chromium
       - name: Run tests
         run: |
           pytest -q
