@@ -19,9 +19,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Install Playwright browsers
-        run: |
-          python -m playwright install --with-deps chromium
+      - name: Setup Playwright browsers and dependencies
+        uses: microsoft/playwright-github-action@v1
+        with:
+          browsers: chromium
       - name: Run tests
         run: |
           pytest -q
