@@ -1,0 +1,8 @@
+body{font-family:Segoe UI,Arial,sans-serif;margin:0}
+.card{box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+#forecastSummary{font-size:0.9rem}
+.list-group-item{font-size:0.9rem}
+.card-header{font-weight:600}
+.badge{font-size:0.8rem}
+.btn{border-radius:6px}
+#recommendArea pre{white-space:pre-wrap}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bobathon Grid Optimiser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bob Grid Optimiser</a>
+        <div class="d-flex">
+          <input id="apiKeyInput" class="form-control form-control-sm me-2" placeholder="API Key" type="password">
+          <button id="btnConnect" class="btn btn-outline-light btn-sm">Connect WS</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card mb-3">
+            <div class="card-body d-flex align-items-center gap-3">
+              <div>
+                <label class="form-label mb-0">Forecast horizon (hrs)</label>
+                <input id="hours" type="number" value="12" min="1" max="168" class="form-control form-control-sm" style="width:120px">
+              </div>
+              <div class="ms-auto">
+                <button id="btnForecast" class="btn btn-primary btn-sm me-2"><i class="fa fa-chart-line"></i> Forecast</button>
+                <button id="btnAnomalies" class="btn btn-warning btn-sm me-2"><i class="fa fa-bolt"></i> Anomalies</button>
+                <button id="btnRecommend" class="btn btn-success btn-sm"><i class="fa fa-lightbulb"></i> Recommend</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card mb-3">
+                <div class="card-header">Forecast</div>
+                <div class="card-body">
+                  <canvas id="forecastChart" height="160"></canvas>
+                  <div id="forecastSummary" class="mt-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-header">Recommendations & Brief</div>
+            <div class="card-body" id="recommendArea">No recommendations yet.</div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card mb-3">
+            <div class="card-header">Asset Health</div>
+            <div class="card-body">
+              <table class="table table-sm" id="assetTable">
+                <thead><tr><th>Asset</th><th>Status</th><th>Last</th></tr></thead>
+                <tbody>
+                  <tr><td>Solar-1</td><td><span class="badge bg-success">OK</span></td><td>--</td></tr>
+                  <tr><td>Wind-3</td><td><span class="badge bg-success">OK</span></td><td>--</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-header">Anomalies</div>
+            <div class="card-body">
+              <ul class="list-group" id="anomalyList">
+                <li class="list-group-item">No anomalies detected</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-header">Realtime</div>
+            <div class="card-body small" id="wsStatus">Disconnected</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
