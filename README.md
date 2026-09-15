@@ -10,7 +10,7 @@ Lightweight, realtime grid forecasting and operator briefing prototype that fore
 |---|---|
 | **Team Name** | VRAM |
 | **Track** | AI / Sustainability |
-| **Team Lead** | Aastha Patel — [email@ibm.com] |
+| **Team Lead** | Aastha Patel — [26pgce014@charusat.edu.in] |
 | **Members** | Vaibhavi Bhatt, Ruchit Jivani, Meet K Patel |
 
 ---
