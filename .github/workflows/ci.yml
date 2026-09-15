@@ -19,10 +19,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Setup Playwright browsers and dependencies
-        uses: microsoft/playwright-github-action@v1
+      - name: Set up Node (for Playwright CLI)
+        uses: actions/setup-node@v4
         with:
-          browsers: chromium
+          node-version: '18'
+
+      - name: Install Playwright system deps and browsers
+        run: |
+          # Use the Playwright CLI via npx to install required OS deps and browser
+          npx playwright@1.37.0 install --with-deps chromium
       - name: Run tests
         run: |
           pytest -q
